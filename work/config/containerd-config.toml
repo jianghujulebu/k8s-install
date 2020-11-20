@@ -1,0 +1,16 @@
+version = 2
+root = "/data/k8s/containerd/root"
+state = "/data/k8s/containerd/state"
+
+[plugins]
+  [plugins."io.containerd.grpc.v1.cri"]
+    sandbox_image = "registry.cn-beijing.aliyuncs.com/images_k8s/pause-amd64:3.1"
+    [plugins."io.containerd.grpc.v1.cri".cni]
+      bin_dir = "/opt/k8s/bin"
+      conf_dir = "/etc/cni/net.d"
+  [plugins."io.containerd.runtime.v1.linux"]
+    shim = "containerd-shim"
+    runtime = "runc"
+    runtime_root = ""
+    no_shim = false
+    shim_debug = false
